@@ -1,0 +1,21 @@
+<% content_for :page_actions do %>
+    <li><%= button_link_to "Back to exceptions list", admin_exceptions_path, :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<div class="date">
+  <%= @exception.created_at.strftime(Time::DATE_FORMATS[:exc_full]) %>
+</div><br/>
+<h1><%= @exception.name %></h1><br/>
+
+<h2>Request</h2>
+<%= pretty_format(@exception.request) %><br/>
+
+<h2>Backtrace</h2>
+<%= simple_format @exception.message %><br/>
+
+<div id="backtrace">
+  <%= raw @exception.backtrace.gsub(/\n/,"<br />") %>
+</div>
+
+<h2>Environment</h2>
+<%= pretty_format(@exception.environment) %>

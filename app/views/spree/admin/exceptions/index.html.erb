@@ -1,0 +1,25 @@
+<% content_for :page_title do %>
+  Listing Exceptions
+<% end %>
+
+<table class="index">
+  <colgroup>
+    <col style="width: 75%;">
+    <col style="width: 25%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Exception</th>
+      <th>Date/Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @exceptions.each do |exception| %>
+    <tr class="<%= cycle('odd', 'even') %>" >
+      <td class="align-center"><%= link_to exception.name, {:action => "show", :id => exception} %></td>
+      <td class="align-center"><%= exception.created_at.to_time %></td%>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<div id="activity" style="display:none;">Busy...</div>
